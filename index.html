@@ -14,7 +14,14 @@
         <div class="chart"></div>
 
         <h2>Paste your CSS:</h2>
-        <textarea id="paste"></textarea>
+        <textarea id="paste">a { text-decoration: none; }
+p a { color: #00F; }
+div p span a { border-bottom: 1px solid #000; }
+.text-center { text-align: center; }
+.text-center.selected { background-color: #FF0; }
+.selected.valid.new ul li a { text-shadow: 0 0 5px #FFF }
+.selected.valid.new.logged-in ul li a { border-radius: 4px; }
+#downloads .active { font-size: 23px; }</textarea>
 
         <h2 id="data">Your data:</h2>
         <ul id="pills">
@@ -74,7 +81,7 @@
             $('.data').hide();
             $('.data.' + selection).show();
         });
-
+        updateChart();
     </script>
 
 </body>
