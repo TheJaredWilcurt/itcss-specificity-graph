@@ -21,6 +21,7 @@ A CSS Selector Specificity graph based on the Inverted Triangle CSS Methodology
 ## Contribute:
 
 * The design could be improved
+* Need to go and clean up the Sass folder, it should *really* be set up to use ITCSS (yeah, that needs fixed)
 * We need lots of testing of the [CSS Selectors to JS Array](http://github.com/TheJaredWilcurt/css-selectors-to-js-array) library. To make sure all valid CSS can be parsed correctly.
 * Add in a CSS Validator library. Prevent CSS parsing unless the file is valid. If the file is invalid, display a warning.
 * Would be nice to have some simple ITCSS [explaination](http://imgur.com/a/6fS7V) on the page.
