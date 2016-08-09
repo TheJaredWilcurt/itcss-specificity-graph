@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <title>ITCSS Specificity Graph</title>
+    <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+    <div id="wrapper">
+        <h1>ITCSS: Specificity graph</h1>
+        <div class="explanation">
+            <p id="yourValues"></p>
+        </div>
+        <div class="chart"></div>
+
+        <h2>Paste your CSS:</h2>
+        <textarea id="paste"></textarea>
+
+        <h2 id="data">Your data:</h2>
+        <ul id="pills">
+            <li data-pill="array" class="selected">Array</li>
+            <li data-pill="json">JSON</li>
+            <li data-pill="csv">CSV</li>
+        </ul>
+        <textarea class="data array"></textarea>
+        <textarea class="data json"></textarea>
+        <textarea class="data csv"></textarea>
+    </div>
+
+    <script type="text/javascript" src="js/ven.jquery-2.2.3.min.js"></script>
+    <script type="text/javascript" src="js/ven.svglinegraph.js"></script>
+    <script type="text/javascript" src="js/ven.selectorstoarray.js"></script>
+    <script type="text/javascript" src="js/ven.specificity.js"></script>
+    <script>
+        function processCSS (css) {
+            //define vars
+            var graph = [];
+            var graphJSON = {};
+            var graphCSV = [];
+            //Convert the CSS to JSON
+            var selectors = window.selectorsToArray(css);
+            //Loop through each rule
+            for (var i = 0; i < selectors.length; i++) {
+                var selector = selectors[i];
+                var spec = SPECIFICITY.calculate(selector)[0].specificityArray;
+                var worth = 0;
+                worth = worth + (spec[0] * 1000); // inline-styles
+                worth = worth + (spec[1] * 100);  // #id
+                worth = worth + (spec[2] * 10);   // .class[attr]:psuedo
+                worth = worth + (spec[3] * 1);    // tag
+                //Add this selectors total value (111) to the graph array
+                graph.push(worth);
+                graphJSON[i] = { [selector]: worth };
+                graphCSV.push(selector + ', ' + worth);
+            }
+            //Update the UI
+            chart.createChart('.chart', graph);
+            $('.data.array').html(graph.join(', '));
+            $('.data.json').html(JSON.stringify(graphJSON, null, 2));
+            $('.data.csv').html(graphCSV.join('\r\n'));
+        }
+
+        function updateChart () {
+            var css = $("#paste").val();
+            processCSS(css);
+        }
+        $("#paste").change(updateChart);
+        $("#paste").keyup(updateChart);
+        $(".data.json,.data.csv").hide();
+        $("#pills li").click(function () {
+            var selection = $(this).data('pill');
+            $('#pills li').removeClass('selected');
+            $(this).addClass('selected');
+            $('.data').hide();
+            $('.data.' + selection).show();
+        });
+
+    </script>
+
+</body>
+</html>
