@@ -7,9 +7,6 @@ A CSS Selector Specificity graph based on the Inverted Triangle CSS Methodology
 * [ITCSS Slides from the above talk](https://speakerdeck.com/dafed/managing-css-projects-with-itcss)
 
 
-* * *
-
-
 ## This repo uses:
 
 * [Alan Menhennet's SVG Line Graph](http://codepen.io/alanmenhennet/pen/WxrXww)
@@ -21,18 +18,12 @@ A CSS Selector Specificity graph based on the Inverted Triangle CSS Methodology
 * [Normalize](https://necolas.github.io/normalize.css/)
 
 
-* * *
-
-
 ## Contribute:
 
 * The design could be improved
 * We need lots of testing of the [CSS Selectors to JS Array](http://github.com/TheJaredWilcurt/css-selectors-to-js-array) library. To make sure all valid CSS can be parsed correctly.
 * Add in a CSS Validator library. Prevent CSS parsing unless the file is valid. If the file is invalid, display a warning.
 * Would be nice to have some simple ITCSS explaination on the page.
-
-
-* * *
 
 
 ## License
