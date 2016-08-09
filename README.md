@@ -2,7 +2,7 @@
 
 A CSS Selector Specificity graph based on the Inverted Triangle CSS Methodology
 
-* [View and use the graph online](http://TheJaredWilcurt.github.io/itcss-specificity-graph)
+* **[View and use the graph online](http://TheJaredWilcurt.github.io/itcss-specificity-graph)** :arrow_left:
 * [Harry Roberts - Managing CSS Projects with ITCSS (YouTube)](https://www.youtube.com/watch?v=1OKZOV-iLj4&t=6m47s)
 * [ITCSS Slides from the above talk](https://speakerdeck.com/dafed/managing-css-projects-with-itcss)
 
