@@ -1,13 +1,28 @@
-// github.com/TheJaredWilcurt/css-selectors-to-js-array | Public Domain | v1.0.0
+// github.com/TheJaredWilcurt/css-selectors-to-js-array | Public Domain | v1.0.1
 
 function selectorsToArray (css) {
-    // Regex to detect @media ... {
+    // Regex to detect @media (stuff) then {
     var mediaQ = /(?:@media.*?\{)/igm;
+    // Regex to detect //single line comments
+    var comment = /(?:\/\/.*?\n)/ig;
+    // Regex to detext /* multi-line comments */
+    var comments = /(?:\/\*(.|\n)*?\*\/)/igm;
     // Check if the CSS contains any media queries
     if (mediaQ.test(css)) {
         // Remove all media queries, they are not selectors
         css = css.split(mediaQ).join('');
     }
+    // Check if the CSS contains single line comments
+    if (comment.test(css)) {
+        // Remove all comments, they are not selectors
+        css = css.split(comment).join('');
+    }
+    // Check if the CSS contains multi-line comments
+    if (comments.test(css)) {
+        // Remove all comments, they are not selectors
+        css = css.split(comments).join('');
+    }
+
     // Split the whole thing based on opening curly braces
     css = css.split("{");
     // Loop through the split in the most performant way possible
@@ -42,6 +57,8 @@ function selectorsToArray (css) {
     // [".thing", "", "h1"] ==> [".thing", "h1"]
     css = css.filter(Boolean)
 
+    var arrayOfSelectors = css;
+
     // Return an array of CSS Selectors in the order they were in the CSS file with none removed/missing
-    return(css);
+    return(arrayOfSelectors);
 }
