@@ -8,7 +8,42 @@
 <body>
 
 <!-- SCOUT-APP CORNER -->
-<style>#scout-corner{position:absolute;top:0;left:0;}#scout-corner img{width:83px}</style>
+<style>
+#scout-corner {
+    display: block;
+    width: 83px;
+    height: 67px;
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    text-decoration: none;
+}
+#scout-corner:after {
+    content: 'Like Sass? Check out Scout-App 2';
+    position: absolute;
+    top: 14px;
+    left: -330px;
+    display: inline-block;
+    width: 100%;
+    min-width: 167px;
+    max-width: 300px;
+    background: #FFD255;
+    border: 1px solid rgba(130, 25, 25, 0.23);
+    border-radius: 4px;
+    padding: 5px 8px 5px 100px;
+    color: #D72D2A;
+    transition: 1s ease all;
+    z-index: 1;
+}
+#scout-corner:hover:after {
+    left: -20px;
+}
+#scout-corner img {
+    position: relative;
+    width: 83px;
+    z-index: 8;
+}
+</style>
 <a href="http://scout-app.io" id="scout-corner"><img src="imgs/scout-app-corner.svg" alt="Scout-App logo icon"></a>
 
 <!-- GITHUB CORNER -->
