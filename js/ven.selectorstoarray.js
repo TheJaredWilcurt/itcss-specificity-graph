@@ -1,4 +1,4 @@
-// github.com/TheJaredWilcurt/css-selectors-to-js-array | Public Domain | v1.0.1
+// github.com/TheJaredWilcurt/css-selectors-to-js-array | Public Domain | v1.0.2
 
 function selectorsToArray (css) {
     // Regex to detect @media (stuff) then {
@@ -10,17 +10,17 @@ function selectorsToArray (css) {
     // Check if the CSS contains any media queries
     if (mediaQ.test(css)) {
         // Remove all media queries, they are not selectors
-        css = css.split(mediaQ).join('');
+        css = css.replace(mediaQ, '');
     }
     // Check if the CSS contains single line comments
     if (comment.test(css)) {
         // Remove all comments, they are not selectors
-        css = css.split(comment).join('');
+        css = css.replace(comment, '');
     }
     // Check if the CSS contains multi-line comments
     if (comments.test(css)) {
         // Remove all comments, they are not selectors
-        css = css.split(comments).join('');
+        css = css.replace(comments, '');
     }
 
     // Split the whole thing based on opening curly braces
